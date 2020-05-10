@@ -150,7 +150,7 @@ public class AnalyserTest {
 
 
     @Test
-    public void testPasses_ForGetting_WorstBowlingEconomy(){
+    public void testPasses_ForGetting_BestBowlingEconomy(){
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
         WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"economy");
         Assert.assertEquals("Shivam Dube",wicketObjectArray[0].player);
@@ -158,10 +158,42 @@ public class AnalyserTest {
     }
 
     @Test
-    public void testPasses_ForGetting_TopBowlingEconomy(){
+    public void testPasses_ForGetting_WorstBowlingEconomy(){
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
         WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"economy");
         Assert.assertEquals("Ben Cutting",wicketObjectArray[wicketObjectArray.length-1].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_BestStrikeRateWith4wAnd5w(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr four five");
+        Assert.assertEquals("Yuzvendra Chahal",wicketObjectArray[0].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_WorstStrikeRateWith4wAnd5w(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr four five");
+        Assert.assertEquals("Liam Livingstone",wicketObjectArray[wicketObjectArray.length-1].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_BestStrikeRateAndAverage(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr avg");
+        Assert.assertEquals("Anukul Roy",wicketObjectArray[0].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_WorstStrikeRateAndAverage(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr avg");
+        Assert.assertEquals("Krishnappa Gowtham",wicketObjectArray[wicketObjectArray.length-1].player);
 
     }
 
