@@ -13,6 +13,9 @@ public enum GetData {
     })),
     SR(Comparator.comparingDouble(obj->{
         return obj.sr;
+    })),
+    SIXFOURS(Comparator.comparing(obj->{
+        return obj.six+obj.four;
     }));
 
     private Comparator comparator;

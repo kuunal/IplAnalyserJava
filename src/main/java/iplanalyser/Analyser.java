@@ -29,7 +29,7 @@ public class Analyser {
     }
 
     public RunClass[] sortRun(String filePath,String type) {
-        return sortRunClass(GetData.valueOf(type.toUpperCase()).getComparator(),getFileName(filePath));
+        return sortRunClass(GetData.valueOf(type.toUpperCase().replace(" ","")).getComparator(),getFileName(filePath));
     }
 
     public RunClass[] sortRunClass(Comparator comparator,String fileName){

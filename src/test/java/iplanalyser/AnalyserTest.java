@@ -51,6 +51,19 @@ public class AnalyserTest {
         Assert.assertEquals("Bhuvneshwar Kumar",runArray[runArray.length-1].player);
     }
 
+    @Test
+    public void testPasses_forGettingPlayerWithMax4sAnd6s(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        RunClass[] runArray = iplAnalyser.sortRun(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"six fours");
+        Assert.assertEquals("Andre Russell",runArray[0].player);
+    }
+
+    @Test
+    public void testPasses_forGettingPlayerWithMin4sAnd6s(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        RunClass[] runArray = iplAnalyser.sortRun(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"six fours");
+        Assert.assertEquals("Shakib Al Hasan",runArray[runArray.length-1].player);
+    }
 
 
 
