@@ -1,6 +1,7 @@
 package iplanalyser;
 
 import iplanalyser.model.RunClass;
+import iplanalyser.model.WicketClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,6 +107,29 @@ public class AnalyserTest {
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
         RunClass[] runArray = iplAnalyser.sortRun(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"runs");
         Assert.assertEquals("Pawan Negi",runArray[runArray.length-1].player);
+    }
+
+    @Test
+    public void testPasses_WhenReturnsCorrectCountForWicketCSV(){
+        List list = iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        Assert.assertEquals(99,list.size());
+    }
+
+
+    @Test
+    public void testPasses_ForGetting_WorstBowlingAverages(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"avg");
+        Assert.assertEquals("Mandeep Singh",wicketObjectArray[0].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_TopBowlingAverages(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"avg");
+        Assert.assertEquals("Krishnappa Gowtham",wicketObjectArray[wicketObjectArray.length-1].player);
+
     }
 
 

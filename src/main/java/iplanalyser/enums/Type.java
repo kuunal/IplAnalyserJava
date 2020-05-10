@@ -2,9 +2,11 @@ package iplanalyser.enums;
 
 
 import iplanalyser.model.RunClass;
+import iplanalyser.model.WicketClass;
 
 public enum Type {
-    RUN(RunClass.class);
+    RUN(RunClass.class),
+    WICKET(WicketClass.class);
 
     private Class klass;
 

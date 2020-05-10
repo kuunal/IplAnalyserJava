@@ -2,16 +2,21 @@ package iplanalyser.dao;
 
 
 import iplanalyser.model.RunClass;
+import iplanalyser.model.WicketClass;
 
-public class IPLDAO {
+public class RunDAO {
     public Double avg;
     public String player;
     public Double sr;
     public Integer six;
     public Integer four;
     public Integer run;
+    public Double over;
+    public Double economy;
     public Integer matches;
-    public IPLDAO(RunClass obj){
+    public Integer fiveWickets;
+    public Integer fourWickets;
+    public RunDAO(RunClass obj){
         this.avg=obj.avg;
         this.player=obj.player;
         this.sr=obj.sr;
@@ -20,7 +25,5 @@ public class IPLDAO {
         this.run=obj.run;
         this.matches=obj.matches;
     }
-    public IPLDAO(){}
-
 
 }

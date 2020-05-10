@@ -2,8 +2,10 @@ package iplanalyser;
 
 import censusanalyser.opencsvbuilder.CSVBuilderFactory;
 import censusanalyser.opencsvbuilder.ICSVBuilder;
-import iplanalyser.dao.IPLDAO;
+import iplanalyser.dao.RunDAO;
+import iplanalyser.dao.WicketsDAO;
 import iplanalyser.model.RunClass;
+import iplanalyser.model.WicketClass;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,7 +25,9 @@ public class LoadData {
             StreamSupport.stream(censusIterable.spliterator(),false)
                     .forEach(csvObject -> {
                         if(className.equals(RunClass.class))
-                            arr.add(new IPLDAO((RunClass) csvObject));
+                            arr.add(new RunDAO((RunClass) csvObject));
+                        else
+                            arr.add(new WicketsDAO((WicketClass)csvObject));
                     });
             return arr;
         } catch (IOException e) {

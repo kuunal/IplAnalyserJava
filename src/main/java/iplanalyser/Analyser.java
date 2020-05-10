@@ -1,12 +1,13 @@
 package iplanalyser;
 
 import censusanalyser.opencsvbuilder.CSVBuilderFactory;
-import censusanalyser.opencsvbuilder.ICSVBuilder;
 import censusanalyser.opencsvbuilder.ISortBuilder;
 import com.google.gson.Gson;
-import iplanalyser.enums.GetData;
+import iplanalyser.enums.GetRunComparator;
+import iplanalyser.enums.GetWicketComparator;
 import iplanalyser.enums.Type;
 import iplanalyser.model.RunClass;
+import iplanalyser.model.WicketClass;
 
 import java.io.File;
 import java.util.Comparator;
@@ -29,11 +30,28 @@ public class Analyser {
     }
 
     public RunClass[] sortRun(String filePath,String type) {
-        return sortRunClass(GetData.valueOf(type.toUpperCase().replace(" ","")).getComparator(),getFileName(filePath));
+        return sortRunClass(GetRunComparator.valueOf(type.toUpperCase().replace(" ","")).getComparator(),getFileName(filePath));
     }
 
     public RunClass[] sortRunClass(Comparator comparator,String fileName){
         ISortBuilder builder = CSVBuilderFactory.getSortBuilder();
         return new Gson().fromJson(builder.sortData(comparator,hmap.get(fileName)),RunClass[].class);
     }
+
+    public WicketClass[] sortWicket(String filePath, String type){
+        ISortBuilder builder = CSVBuilderFactory.getSortBuilder();
+        String sortedString = builder.sortData(GetWicketComparator.valueOf(type.toUpperCase().replace(" ","")).getComparator(),hmap.get(getFileName(filePath)));
+        return reverse(new Gson().fromJson(sortedString,WicketClass[].class));
+
+    }
+
+    private WicketClass[] reverse(WicketClass[] wicketArray) {
+        for(int startIndex=0,endIndex=wicketArray.length-1;startIndex<endIndex;startIndex++,endIndex--){
+            WicketClass temp = wicketArray[startIndex];
+            wicketArray[startIndex]=wicketArray[endIndex];
+            wicketArray[endIndex]=temp;
+        }
+        return wicketArray;
+    }
+
 }
