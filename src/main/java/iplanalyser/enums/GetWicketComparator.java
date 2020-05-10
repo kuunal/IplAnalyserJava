@@ -8,6 +8,9 @@ import java.util.Comparator;
 public enum GetWicketComparator {
     AVG(Comparator.comparingDouble(obj->{
         return obj.avg;
+    })),
+    SR(Comparator.comparingDouble(obj->{
+        return obj.sr;
     }));
 
     private Comparator comparator;

@@ -132,6 +132,22 @@ public class AnalyserTest {
 
     }
 
+    @Test
+    public void testPasses_ForGetting_WorstBowlingStrikeRate(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr");
+        Assert.assertEquals("Mandeep Singh",wicketObjectArray[0].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_TopBowlingStrikeRate(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"sr");
+        Assert.assertEquals("Krishnappa Gowtham",wicketObjectArray[wicketObjectArray.length-1].player);
+
+    }
+
 
 
 }
