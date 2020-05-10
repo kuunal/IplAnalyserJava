@@ -5,20 +5,16 @@ import iplanalyser.dao.RunDAO;
 import iplanalyser.model.RunClass;
 
 public enum Type {
-    RUN(RunClass.class, RunDAO.class);
+    RUN(RunClass.class);
 
     private Class klass;
-    private Class daoClass;
 
-    Type(Class klass, Class DAOClass){
+    Type(Class klass){
         this.klass=klass;
-        this.daoClass =DAOClass;
     }
 
     public Class getKlass(){
         return this.klass;
     }
-
-    public Class getDaoClass(){return this.daoClass;}
 
 }
