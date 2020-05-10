@@ -1,6 +1,6 @@
 package iplanalyser.enums;
 
-import iplanalyser.dao.RunDAO;
+import iplanalyser.dao.IPLDAO;
 
 import java.util.Comparator;
 
@@ -10,16 +10,18 @@ public enum GetData {
 
     AVG(Comparator.comparingDouble(obj -> {
         return obj.avg;
+    })),
+    SR(Comparator.comparingDouble(obj->{
+        return obj.sr;
     }));
 
-    private Comparator<RunDAO> comparator;
+    private Comparator comparator;
 
-    GetData(Comparator<RunDAO> comparator){
+    GetData(Comparator<IPLDAO> comparator){
         this.comparator=comparator;
     }
 
-    public Comparator<RunDAO> getComparator() {
+    public Comparator getComparator() {
         return comparator;
     }
-
 }

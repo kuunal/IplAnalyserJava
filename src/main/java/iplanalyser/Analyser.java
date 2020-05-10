@@ -28,10 +28,11 @@ public class Analyser {
         return this.hmap.get(fileName);
     }
 
+    public RunClass[] sortRun(String filePath,String type) {
+        return sortRunClass(GetData.valueOf(type.toUpperCase()).getComparator(),getFileName(filePath));
+    }
 
-    public RunClass[] sortRunCSV(String filePath,String type) {
-        String fileName=getFileName(filePath);
-        Comparator comparator= GetData.valueOf(type.trim().toUpperCase()).getComparator();
+    public RunClass[] sortRunClass(Comparator comparator,String fileName){
         ISortBuilder builder = CSVBuilderFactory.getSortBuilder();
         return new Gson().fromJson(builder.sortData(comparator,hmap.get(fileName)),RunClass[].class);
     }

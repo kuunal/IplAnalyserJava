@@ -3,7 +3,7 @@ package iplanalyser.dao;
 
 import iplanalyser.model.RunClass;
 
-public class RunDAO {
+public class IPLDAO {
     public Double avg;
     public String player;
     public Double sr;
@@ -11,7 +11,7 @@ public class RunDAO {
     public Integer four;
     public Integer run;
     public Integer matches;
-    public RunDAO(RunClass obj){
+    public IPLDAO(RunClass obj){
         this.avg=obj.avg;
         this.player=obj.player;
         this.sr=obj.sr;
@@ -20,7 +20,7 @@ public class RunDAO {
         this.run=obj.run;
         this.matches=obj.matches;
     }
-    public RunDAO(){}
+    public IPLDAO(){}
 
 
 }

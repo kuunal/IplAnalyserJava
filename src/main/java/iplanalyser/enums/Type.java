@@ -1,7 +1,6 @@
 package iplanalyser.enums;
 
 
-import iplanalyser.dao.RunDAO;
 import iplanalyser.model.RunClass;
 
 public enum Type {
