@@ -22,6 +22,9 @@ public enum GetData {
     )),
     AVGSR(Comparator.comparingDouble(obj->{
         return obj.avg+obj.sr;
+    })),
+    RUNS(Comparator.comparing(obj->{
+        return obj.run;
     }));
 
     private Comparator comparator;
