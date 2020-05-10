@@ -66,6 +66,20 @@ public class AnalyserTest {
     }
 
 
+    @Test
+    public void testPasses_forGettingPlayer_OfBestStrikeRate_WithMax4sAnd6s(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        RunClass[] runArray = iplAnalyser.sortRun(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"strike rate with six and four");
+        Assert.assertEquals("Andre Russell",runArray[0].player);
+    }
+
+    @Test
+    public void testPasses_forGettingPlayer_OfWorstStrikeRate_WithMin4sAnd6s(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        RunClass[] runArray = iplAnalyser.sortRun(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"strike rate with six and four");
+        Assert.assertEquals("Pawan Negi",runArray[runArray.length-1].player);
+    }
+
 
 
 }

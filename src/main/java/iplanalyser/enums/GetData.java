@@ -16,7 +16,10 @@ public enum GetData {
     })),
     SIXFOURS(Comparator.comparing(obj->{
         return obj.six+obj.four;
-    }));
+    })),
+    STRIKERATEWITHSIXANDFOUR(Comparator.comparingDouble(obj->
+            ((obj.four*4 + obj.six*6)/obj.matches)
+    ));
 
     private Comparator comparator;
 
