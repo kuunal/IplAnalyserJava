@@ -23,4 +23,7 @@ public class WicketClass {
 
     @CsvBindByName(column = "Econ")
     public Double economy;
+
+    @CsvBindByName(column = "Wkts")
+    public Integer wickets;
 }

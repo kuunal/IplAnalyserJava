@@ -1,6 +1,8 @@
 package iplanalyser.enums;
 
 import iplanalyser.dao.RunDAO;
+import iplanalyser.dao.WicketsDAO;
+import iplanalyser.model.WicketClass;
 
 import java.util.Comparator;
 
@@ -26,7 +28,6 @@ public enum GetRunComparator {
     RUNS(Comparator.comparing(obj->{
         return obj.run;
     }));
-
 
     private Comparator comparator;
 

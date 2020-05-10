@@ -2,7 +2,6 @@ package iplanalyser.dao;
 
 
 import iplanalyser.model.RunClass;
-import iplanalyser.model.WicketClass;
 
 public class RunDAO {
     public Double avg;
@@ -25,5 +24,7 @@ public class RunDAO {
         this.run=obj.run;
         this.matches=obj.matches;
     }
+
+
 
 }

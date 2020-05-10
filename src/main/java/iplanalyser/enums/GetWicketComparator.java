@@ -24,6 +24,9 @@ public enum GetWicketComparator {
         if(obj.sr!=0&&obj.avg!=0)
             return obj.sr+obj.avg;
         return 100;
+    })),
+    WICKETS(Comparator.comparing(obj->{
+        return obj.wickets;
     }));
 
     private Comparator comparator;

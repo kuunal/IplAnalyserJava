@@ -198,6 +198,13 @@ public class AnalyserTest {
     }
 
 
+    @Test
+    public void testPasses_ForGetting_MaxWickets(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wickets");
+        Assert.assertEquals("Imran Tahir",wicketObjectArray[wicketObjectArray.length-1].player);
+
+    }
 
 
 }
