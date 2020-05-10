@@ -11,6 +11,9 @@ public enum GetWicketComparator {
     })),
     SR(Comparator.comparingDouble(obj->{
         return obj.sr;
+    })),
+    ECONOMY(Comparator.comparingDouble(obj->{
+        return obj.economy;
     }));
 
     private Comparator comparator;

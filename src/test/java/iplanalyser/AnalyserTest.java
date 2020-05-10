@@ -149,6 +149,24 @@ public class AnalyserTest {
     }
 
 
+    @Test
+    public void testPasses_ForGetting_WorstBowlingEconomy(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"economy");
+        Assert.assertEquals("Shivam Dube",wicketObjectArray[0].player);
+
+    }
+
+    @Test
+    public void testPasses_ForGetting_TopBowlingEconomy(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        WicketClass[] wicketObjectArray = iplAnalyser.sortWicket(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"economy");
+        Assert.assertEquals("Ben Cutting",wicketObjectArray[wicketObjectArray.length-1].player);
+
+    }
+
+
+
 
 }
 
