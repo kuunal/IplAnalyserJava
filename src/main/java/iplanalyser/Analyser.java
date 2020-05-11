@@ -63,10 +63,15 @@ public class Analyser {
         String key2 = getFileName(fileName2);
         for(int i = 0 ; i < hmap.get(key1).size();i++){
             for(int j = 0 ; j < hmap.get(key2).size();j++){
-                if(hmap.get(key1).get(i).player.equals(hmap.get(key2).get(j).player))
+                if(hmap.get(key1).get(i).player.equals(hmap.get(key2).get(j).player)) {
                     hmap.get(key1).get(i).setBowlingAverage(hmap.get(key2).get(j).bowlingAverage);
-                if(j==hmap.get(key2).size()-1)
+                    hmap.get(key1).get(i).setWickets(hmap.get(key2).get(j).wickets);
+                    break;
+                }
+                if(j==hmap.get(key2).size()-1) {
                     hmap.get(key1).get(i).setBowlingAverage(0.0);
+                    hmap.get(key1).get(i).setWickets(0);
+                }
             }
         }
         ISortBuilder builder = CSVBuilderFactory.getSortBuilder();

@@ -43,4 +43,10 @@ public class RunDAO {
     public void setBowlingAverage(Double bowlingAverage) {
         this.bowlingAverage = bowlingAverage;
     }
+
+    public void setWickets(Integer wickets) {
+        this.wickets = wickets;
+    }
+
+
 }

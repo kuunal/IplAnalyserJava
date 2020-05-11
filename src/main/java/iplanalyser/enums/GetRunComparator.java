@@ -26,8 +26,11 @@ public enum GetRunComparator {
     RUNS(Comparator.comparing(obj->{
         return obj.run;
     })),
-    MOSTRUNSANDWICKETS(Comparator.comparing(obj->{
+    MOSTBATTINGANDBOWLINGAVERAGE(Comparator.comparing(obj->{
             return obj.battingAverage-obj.bowlingAverage;
+    })),
+    MOSTRUNSANDWICKET(Comparator.comparing(obj->{
+        return obj.wickets+obj.run;
     }));
 
     private Comparator comparator;

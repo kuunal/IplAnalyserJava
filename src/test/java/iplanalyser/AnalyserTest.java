@@ -211,7 +211,7 @@ public class AnalyserTest {
     public void testPasses_ForGetting_PlayerWithBestAverage_InBatingAndBowling(){
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
-        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKETS,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTBATTINGANDBOWLINGAVERAGE,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
         Assert.assertEquals("MS Dhoni",obj[0].player);
     }
 
@@ -219,8 +219,25 @@ public class AnalyserTest {
     public void testPasses_ForGetting_PlayerWithWorstAverage_InBattingAndBowling(){
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
         iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
-        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKETS,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTBATTINGANDBOWLINGAVERAGE,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
         Assert.assertEquals("Alzarri Joseph",obj[obj.length-1].player);
+    }
+
+
+    @Test
+    public void testPasses_ForGetting_PlayerWithMostRunsAndWicket(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKET,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        Assert.assertEquals("David Warner",obj[0].player);
+    }
+
+    @Test
+    public void testPasses_ForGetting_PlayerWithLeastRunsAndWicket(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKET,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        Assert.assertEquals("Tim Southee",obj[obj.length-1].player);
     }
 }
 
