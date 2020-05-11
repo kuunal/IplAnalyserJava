@@ -3,7 +3,6 @@ package iplanalyser;
 import censusanalyser.opencsvbuilder.CSVBuilderFactory;
 import censusanalyser.opencsvbuilder.ICSVBuilder;
 import iplanalyser.dao.RunDAO;
-import iplanalyser.dao.WicketsDAO;
 import iplanalyser.model.RunClass;
 import iplanalyser.model.WicketClass;
 
@@ -18,7 +17,7 @@ import java.util.stream.StreamSupport;
 public class LoadData {
     public static <E> ArrayList loadData(String filePath, Class className) {
         try(Reader reader = Files.newBufferedReader(Paths.get(filePath));){
-            ArrayList<Object> arr = new ArrayList<>();
+            ArrayList arr = new ArrayList<>();
             ICSVBuilder builder = CSVBuilderFactory.getBuilder();
             Iterator<E> censusCSVIterator = builder.getCSVFileIterator(reader,className);
             Iterable<E> censusIterable = ()-> censusCSVIterator;
@@ -27,7 +26,7 @@ public class LoadData {
                         if(className.equals(RunClass.class))
                             arr.add(new RunDAO((RunClass) csvObject));
                         else
-                            arr.add(new WicketsDAO((WicketClass)csvObject));
+                            arr.add(new RunDAO((WicketClass)csvObject));
                     });
             return arr;
         } catch (IOException e) {

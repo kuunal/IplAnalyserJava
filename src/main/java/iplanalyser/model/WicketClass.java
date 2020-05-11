@@ -13,13 +13,13 @@ public class WicketClass {
     public Integer fourWickets;
 
     @CsvBindByName(column = "Avg")
-    public Double avg;
+    public Double bowlingAverage;
 
     @CsvBindByName(column = "PLAYER")
     public String player;
 
     @CsvBindByName(column = "SR")
-    public Double sr;
+    public Double bowlingStrikeRate;
 
     @CsvBindByName(column = "Econ")
     public Double economy;

@@ -1,5 +1,6 @@
 package iplanalyser;
 
+import iplanalyser.enums.GetRunComparator;
 import iplanalyser.model.RunClass;
 import iplanalyser.model.WicketClass;
 import org.junit.Assert;
@@ -206,6 +207,20 @@ public class AnalyserTest {
 
     }
 
+    @Test
+    public void testPasses_ForGetting_PlayerWithBestAverage_InBatingAndBowling(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKETS,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        Assert.assertEquals("MS Dhoni",obj[0].player);
+    }
 
+    @Test
+    public void testPasses_ForGetting_PlayerWithWorstAverage_InBattingAndBowling(){
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_RUNS_CSV,"run");
+        iplAnalyser.getData(IPL_2019_FACTSHEET_MOST_WKTS_CSV,"wicket");
+        RunClass[] obj = iplAnalyser.merge(IPL_2019_FACTSHEET_MOST_RUNS_CSV, GetRunComparator.MOSTRUNSANDWICKETS,IPL_2019_FACTSHEET_MOST_WKTS_CSV);
+        Assert.assertEquals("Alzarri Joseph",obj[obj.length-1].player);
+    }
 }
 

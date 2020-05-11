@@ -1,16 +1,15 @@
 package iplanalyser.enums;
 
-import iplanalyser.dao.WicketsDAO;
-import iplanalyser.model.WicketClass;
+import iplanalyser.dao.RunDAO;
 
 import java.util.Comparator;
 
 public enum GetWicketComparator {
     AVG(Comparator.comparingDouble(obj->{
-        return obj.avg;
+        return obj.bowlingAverage;
     })),
     SR(Comparator.comparingDouble(obj->{
-        return obj.sr;
+        return obj.bowlingStrikeRate;
     })),
     ECONOMY(Comparator.comparingDouble(obj->{
         return obj.economy;
@@ -21,8 +20,8 @@ public enum GetWicketComparator {
         return 100;
     })),
     SRAVG(Comparator.comparingDouble(obj->{
-        if(obj.sr!=0&&obj.avg!=0)
-            return obj.sr+obj.avg;
+        if(obj.bowlingAverage!=0&&obj.bowlingStrikeRate!=0)
+            return obj.bowlingAverage+obj.bowlingStrikeRate;
         return 100;
     })),
     WICKETS(Comparator.comparing(obj->{
@@ -31,7 +30,7 @@ public enum GetWicketComparator {
 
     private Comparator comparator;
 
-    GetWicketComparator(Comparator<WicketsDAO> classComparator){
+    GetWicketComparator(Comparator<RunDAO> classComparator){
         this.comparator=classComparator;
     }
 

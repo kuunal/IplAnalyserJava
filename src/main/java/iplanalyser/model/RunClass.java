@@ -6,13 +6,13 @@ import com.opencsv.bean.CsvBindByName;
 public class RunClass {
 
     @CsvBindByName(column = "Avg")
-    public Double avg;
+    public Double battingAverage;
 
     @CsvBindByName(column = "PLAYER")
     public String player;
 
     @CsvBindByName(column = "SR")
-    public Double sr;
+    public Double battingStrikeRate;
 
     @CsvBindByName(column = "6s")
     public Integer six;
