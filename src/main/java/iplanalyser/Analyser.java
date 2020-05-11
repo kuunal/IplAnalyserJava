@@ -1,4 +1,4 @@
-package iplanalyser;
+    package iplanalyser;
 
 import censusanalyser.opencsvbuilder.CSVBuilderFactory;
 import censusanalyser.opencsvbuilder.ICSVBuilder;
@@ -32,8 +32,8 @@ public class Analyser {
         return this.hmap.get(fileName);
     }
 
-    public RunClass[] sortRun(String filePath,String type) {
-        return sortRunClass(GetRunComparator.valueOf(type.toUpperCase().replace(" ","")).getComparator(),getFileName(filePath));
+    public RunClass[] sortRun(String filePath,GetRunComparator type) {
+        return sortRunClass(type.getComparator(),getFileName(filePath));
     }
 
     public RunClass[] sortRunClass(Comparator comparator,String fileName){
@@ -41,10 +41,9 @@ public class Analyser {
         return new Gson().fromJson(builder.sortData(comparator,hmap.get(fileName)),RunClass[].class);
     }
 
-    public WicketClass[] sortWicket(String filePath, String type){
-
+    public WicketClass[] sortWicket(String filePath, GetWicketComparator type){
         ISortBuilder builder = CSVBuilderFactory.getSortBuilder();
-        String sortedString = builder.sortData(GetWicketComparator.valueOf(type.toUpperCase().replace(" ","")).getComparator(),hmap.get(getFileName(filePath)));
+        String sortedString = builder.sortData(type.getComparator(),hmap.get(getFileName(filePath)));
         return reverse(new Gson().fromJson(sortedString,WicketClass[].class));
 
     }
@@ -63,10 +62,15 @@ public class Analyser {
         String key2 = getFileName(fileName2);
         for(int i = 0 ; i < hmap.get(key1).size();i++){
             for(int j = 0 ; j < hmap.get(key2).size();j++){
-                if(hmap.get(key1).get(i).player.equals(hmap.get(key2).get(j).player))
+                if(hmap.get(key1).get(i).player.equals(hmap.get(key2).get(j).player)) {
                     hmap.get(key1).get(i).setBowlingAverage(hmap.get(key2).get(j).bowlingAverage);
-                if(j==hmap.get(key2).size()-1)
+                    hmap.get(key1).get(i).setWickets(hmap.get(key2).get(j).wickets);
+                    break;
+                }
+                if(j==hmap.get(key2).size()-1) {
                     hmap.get(key1).get(i).setBowlingAverage(0.0);
+                    hmap.get(key1).get(i).setWickets(0);
+                }
             }
         }
         ISortBuilder builder = CSVBuilderFactory.getSortBuilder();

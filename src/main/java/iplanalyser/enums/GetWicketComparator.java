@@ -5,21 +5,25 @@ import iplanalyser.dao.RunDAO;
 import java.util.Comparator;
 
 public enum GetWicketComparator {
-    AVG(Comparator.comparingDouble(obj->{
+    BOWLING_AVERAGE(Comparator.comparingDouble(obj->{
+        if(obj.bowlingStrikeRate!=0)
         return obj.bowlingAverage;
+        return 100.0;
     })),
-    SR(Comparator.comparingDouble(obj->{
+    BOWLING_STRIKE_RATE(Comparator.comparingDouble(obj->{
+        if(obj.bowlingStrikeRate!=0)
         return obj.bowlingStrikeRate;
+        return 100.0;
     })),
     ECONOMY(Comparator.comparingDouble(obj->{
-        return obj.economy;
+        if(obj.economy!=0)
+            return obj.economy;
+        return 100.0;
     })),
-    SRFOURFIVE(Comparator.comparingDouble(obj->{
-        if(obj.fourWickets!=0||obj.fiveWickets!=0)
-            return ((obj.fiveWickets*5+obj.fourWickets*4)/obj.over*6);
-        return 100;
+    STRIKE_RATE_WITH_FOUR_AND_FIVE_WICKETS(Comparator.comparingDouble(obj->{
+            return obj.over*6/(obj.fiveWickets*5+obj.fourWickets*4);
     })),
-    SRAVG(Comparator.comparingDouble(obj->{
+    STRIKE_RATE_WITH_AVERAGE(Comparator.comparingDouble(obj->{
         if(obj.bowlingAverage!=0&&obj.bowlingStrikeRate!=0)
             return obj.bowlingAverage+obj.bowlingStrikeRate;
         return 100;
